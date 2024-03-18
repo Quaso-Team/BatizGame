@@ -10,5 +10,12 @@ func _ready():
 
 
 func _on_timer_timeout():
-	get_tree().quit()
+	var data_game = Variables.DATA_GAME
+	var escene = data_game.locate.escene
+	if escene == "cuarto_nataly":
+		get_tree().change_scene_to_file("res://Escenas/cuarto_nataly.tscn")
+		pass
+	else: 
+		get_tree().change_scene_to_file("res://Escenas/Menu.tscn")
+		pass
 	pass # Replace with function body.

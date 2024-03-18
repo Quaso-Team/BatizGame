@@ -1,18 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6crbj7ni0a7r"]
+[gd_scene load_steps=6 format=3 uid="uid://c6crbj7ni0a7r"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_a51yr"]
+[ext_resource type="Script" path="res://Scripts/Menus/Menu.gd" id="1_a51yr"]
 [ext_resource type="Texture2D" uid="uid://bwfu8a7hd3lqq" path="res://Assets/Menu/MenuBorrador.png" id="1_ww157"]
 [ext_resource type="Texture2D" uid="uid://n7whworx25bf" path="res://Assets/Menu/Botón puchado.png" id="2_6i27t"]
 [ext_resource type="Texture2D" uid="uid://br8hxq4j4efac" path="res://Assets/Menu/Botón sin puchar (1).png" id="3_j40x7"]
+[ext_resource type="AudioStream" uid="uid://cjdqylupkqb6e" path="res://Assets/Menu/title_screen.mp3" id="5_cqnyw"]
 
 [node name="MainMenu" type="Node2D"]
-position = Vector2(-1, 5)
+show_behind_parent = true
+top_level = true
 script = ExtResource("1_a51yr")
 
 [node name="Fondo" type="Node2D" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="Fondo"]
+offset_left = -451.0
+offset_top = -288.0
+offset_right = 1695.0
+offset_bottom = 960.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
 [node name="MenuBorrador" type="Sprite2D" parent="Fondo"]
-position = Vector2(576, 320)
+position = Vector2(577, 324)
 texture = ExtResource("1_ww157")
 
 [node name="Label" type="Label" parent="."]
@@ -26,20 +35,40 @@ localize_numeral_system = false
 theme_override_font_sizes/font_size = 64
 text = "Batiz Game"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 42.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 custom_minimum_size = Vector2(23, 25)
 layout_direction = 1
-offset_left = 64.0
-offset_top = 168.0
-offset_right = 1088.0
-offset_bottom = 2288.0
+offset_left = 70.3
+offset_top = 167.0
+offset_right = 1094.3
+offset_bottom = 2287.0
 scale = Vector2(0.3, 0.2)
 pivot_offset = Vector2(9, 0)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer"]
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+size_flags_stretch_ratio = 32.0
+texture_normal = ExtResource("3_j40x7")
+texture_pressed = ExtResource("2_6i27t")
+texture_disabled = ExtResource("2_6i27t")
+
+[node name="TextureButton2" type="TextureButton" parent="Control/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -49,7 +78,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton2" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -59,7 +88,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton3" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton4" type="TextureButton" parent="Control/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -69,7 +98,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton4" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton5" type="TextureButton" parent="Control/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -79,7 +108,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton5" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton6" type="TextureButton" parent="Control/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -88,22 +117,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
-
-[node name="TextureButton6" type="TextureButton" parent="VBoxContainer"]
-clip_contents = true
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 3
-size_flags_stretch_ratio = 32.0
-texture_normal = ExtResource("3_j40x7")
-texture_pressed = ExtResource("2_6i27t")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="ButtonText" type="Label" parent="Control"]
 layout_mode = 0
@@ -171,9 +184,23 @@ text = "Huir"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="button_down" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
-[connection signal="button_down" from="VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_button_down"]
-[connection signal="button_down" from="VBoxContainer/TextureButton3" to="." method="_on_texture_button_3_button_down"]
-[connection signal="button_down" from="VBoxContainer/TextureButton4" to="." method="_on_texture_button_4_button_down"]
-[connection signal="button_down" from="VBoxContainer/TextureButton5" to="." method="_on_texture_button_5_button_down"]
-[connection signal="button_down" from="VBoxContainer/TextureButton6" to="." method="_on_texture_button_6_button_down"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cqnyw")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+y_sort_enabled = true
+position = Vector2(577, 323)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[connection signal="button_down" from="Control/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/TextureButton3" to="." method="_on_texture_button_3_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/TextureButton4" to="." method="_on_texture_button_4_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/TextureButton5" to="." method="_on_texture_button_5_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/TextureButton6" to="." method="_on_texture_button_6_button_down"]

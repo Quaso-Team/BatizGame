@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctpipuv4fl0ok"]
+
+[ext_resource type="Texture2D" uid="uid://clc8eo1lxd5qy" path="res://Assets/NatalyRoom/Beta cama 3.png" id="1_j54s4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f28h3"]
+size = Vector2(128, 253)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_j54s4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_f28h3")

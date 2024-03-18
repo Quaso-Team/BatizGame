@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0vmaanjh5i32"]
 
 [ext_resource type="Script" path="res://Scripts/LoadingPages/loading_start.gd" id="1_v5o7i"]
-[ext_resource type="Texture2D" uid="uid://wx51bh1pshd1" path="res://Assets/LoadingPages/escudoCECyT9.png" id="2_as8y3"]
+[ext_resource type="Texture2D" uid="uid://2iflb0lxm2jp" path="res://Logo.png" id="2_2fss5"]
 
 [sub_resource type="Animation" id="Animation_ol5hs"]
 resource_name = "LoadingPage"
@@ -51,9 +51,9 @@ offset_bottom = 686.0
 color = Color(0, 0, 0, 1)
 
 [node name="EscudoCeCyT9" type="Sprite2D" parent="."]
-position = Vector2(579, 214)
+position = Vector2(568, 264)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_as8y3")
+texture = ExtResource("2_2fss5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 325)
