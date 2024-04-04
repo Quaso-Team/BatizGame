@@ -15,6 +15,14 @@ func _on_texture_button_button_down():
 		var data = Addonsave.edit_data("player_data_1", ".save")
 		Variables.SetData(data)
 		get_tree().change_scene_to_file("res://Escenas/loading_start.tscn")
+	if lastSlot.Id == 2:
+		var data = Addonsave.edit_data("player_data_2", ".save")
+		Variables.SetData(data)
+		get_tree().change_scene_to_file("res://Escenas/loading_start.tscn")
+	if lastSlot.Id == 3:
+		var data = Addonsave.edit_data("player_data_3", ".save")
+		Variables.SetData(data)
+		get_tree().change_scene_to_file("res://Escenas/loading_start.tscn")
 	pass # Replace with function body.
 
 

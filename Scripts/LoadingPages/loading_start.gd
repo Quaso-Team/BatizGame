@@ -13,12 +13,14 @@ func _on_timer_timeout():
 	var data_game = Variables.DATA_GAME
 	var escene = data_game.locate.escene
 	print(escene)
-	if escene == "cuarto_nataly":
-		get_tree().change_scene_to_file("res://Escenas/cuarto_nataly.tscn")
-		pass
-	if escene == "NewGame":
-		get_tree().change_scene_to_file("res://Escenas/NewGame.tscn")
-		pass
-	else: 
-		pass
-	pass # Replace with function body.
+	
+	Pause.notPause = false
+	
+	match escene:
+		"cuarto_nataly":
+			get_tree().change_scene_to_file("res://Escenas/cuarto_nataly.tscn")
+		"NewGame":
+			get_tree().change_scene_to_file("res://Escenas/NewGame.tscn")
+		_: 
+			print('null')
+			Pause.notPause = true
