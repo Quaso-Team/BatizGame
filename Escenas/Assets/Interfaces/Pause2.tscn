@@ -1,22 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqbwmrbm0pqlk"]
+[gd_scene load_steps=5 format=3 uid="uid://dqbwmrbm0pqlk"]
 
 [ext_resource type="Texture2D" uid="uid://br8hxq4j4efac" path="res://Assets/Menu/Botón sin puchar (1).png" id="1_lcb5x"]
+[ext_resource type="Script" path="res://Scripts/Menus/PauseGame.gd" id="1_xe43x"]
 [ext_resource type="Texture2D" uid="uid://n7whworx25bf" path="res://Assets/Menu/Botón puchado.png" id="2_kt1qn"]
+[ext_resource type="PackedScene" uid="uid://d0x6q5ooccs3h" path="res://Escenas/Assets/Interfaces/OpcionsMenuVolumen.tscn" id="4_eoare"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 290.0
+offset_top = 93.0
+offset_right = -211.0
+offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xe43x")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 40.0
-offset_right = 984.0
-offset_bottom = 560.0
+offset_left = -106.0
+offset_top = -31.0
+offset_right = 686.0
+offset_bottom = 489.0
 
 [node name="Opciones" type="VBoxContainer" parent="Panel"]
 layout_direction = 1
@@ -31,7 +38,7 @@ theme_override_constants/separation = 11
 [node name="Personajes" type="TextureButton" parent="Panel/Opciones"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 3
+size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
@@ -47,7 +54,7 @@ text = "Personaje"
 
 [node name="Objetos" type="TextureButton" parent="Panel/Opciones"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
@@ -63,7 +70,7 @@ text = "Objetos"
 
 [node name="Opciones" type="TextureButton" parent="Panel/Opciones"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
@@ -79,7 +86,7 @@ text = "Opciones"
 
 [node name="Guardar partida" type="TextureButton" parent="Panel/Opciones"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
@@ -99,3 +106,47 @@ offset_left = 328.0
 offset_top = 16.0
 offset_right = 760.0
 offset_bottom = 504.0
+
+[node name="Personajes" type="Panel" parent="Panel/PanelContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/Personajes"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "En desarrollo"
+
+[node name="Objetos" type="Panel" parent="Panel/PanelContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/Objetos"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "En desarrollo"
+
+[node name="Opciones" type="Panel" parent="Panel/PanelContainer"]
+layout_mode = 2
+
+[node name="Volumen" parent="Panel/PanelContainer/Opciones" instance=ExtResource("4_eoare")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 412.0
+offset_bottom = 486.0
+scale = Vector2(1.5, 1.5)
+
+[node name="GuardarPartida" type="Panel" parent="Panel/PanelContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/Opciones/Personajes" to="." method="_on_personajes_pressed"]
+[connection signal="pressed" from="Panel/Opciones/Objetos" to="." method="_on_objetos_pressed"]
+[connection signal="pressed" from="Panel/Opciones/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="Panel/Opciones/Guardar partida" to="." method="_on_guardar_partida_pressed"]

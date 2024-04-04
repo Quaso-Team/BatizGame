@@ -22,6 +22,7 @@ config/windows_native_icon="res://Logo.ico"
 
 Addonsave="*res://AddonSave/addonsave.gd"
 Variables="*res://Scripts/Global/Variables.gd"
+Pause="*res://Escenas/Assets/Interfaces/Pause2.tscn"
 
 [display]
 
