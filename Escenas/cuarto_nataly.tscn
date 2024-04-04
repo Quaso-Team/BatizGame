@@ -1,18 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0fo6fw7n08q8"]
+[gd_scene load_steps=9 format=3 uid="uid://d0fo6fw7n08q8"]
 
+[ext_resource type="Script" path="res://Scripts/Escenas/Pause.gd" id="1_p6u5k"]
 [ext_resource type="PackedScene" uid="uid://w8x3ywc2ox47" path="res://Escenas/Assets/CuartoNataly/PisoYPared.tscn" id="2_eff7c"]
+[ext_resource type="PackedScene" uid="uid://da3lpokoxkc0o" path="res://Escenas/Assets/CuartoNataly/Mesita.tscn" id="3_jdxok"]
 [ext_resource type="PackedScene" uid="uid://ctpipuv4fl0ok" path="res://Escenas/Assets/CuartoNataly/Cama.tscn" id="3_mhpig"]
 [ext_resource type="PackedScene" uid="uid://dwjkvhwnr3mt7" path="res://Personajes/Nataly.tscn" id="5_b7gut"]
+[ext_resource type="PackedScene" uid="uid://bh4tlpu4xl5tm" path="res://Escenas/Assets/CuartoNataly/Escritorio.tscn" id="5_qpkxm"]
+[ext_resource type="PackedScene" uid="uid://u7ms61di4yc6" path="res://Escenas/Assets/CuartoNataly/Armario.tscn" id="7_k3sgk"]
+[ext_resource type="PackedScene" uid="uid://b8fjlbycl5jvc" path="res://Escenas/Assets/CuartoNataly/Alfombra.tscn" id="8_n0uko"]
 
 [node name="CuartoNataly" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(264, 286)
+script = ExtResource("1_p6u5k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1108.0
-offset_top = -583.0
-offset_right = 1585.0
-offset_bottom = 1102.0
+offset_left = -1025.0
+offset_top = -856.0
+offset_right = 1668.0
+offset_bottom = 829.0
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -20,11 +26,39 @@ position = Vector2(315, 37)
 zoom = Vector2(0.8, 0.8)
 
 [node name="Nataly" parent="." instance=ExtResource("5_b7gut")]
-z_index = 3
-position = Vector2(239, 181)
+z_index = 10
+position = Vector2(309, 102)
 
 [node name="CuartoYPiso" parent="." instance=ExtResource("2_eff7c")]
+z_index = 2
 position = Vector2(310, 123)
 
-[node name="StaticBody2D" parent="CuartoYPiso" instance=ExtResource("3_mhpig")]
-position = Vector2(-188, -194)
+[node name="StaticBody2D" parent="." instance=ExtResource("3_jdxok")]
+z_index = 5
+position = Vector2(257, -142)
+
+[node name="Mesita" parent="." instance=ExtResource("3_mhpig")]
+z_index = 5
+position = Vector2(122, -71)
+
+[node name="Escritorio" parent="." instance=ExtResource("5_qpkxm")]
+z_index = 5
+position = Vector2(494, 45)
+
+[node name="Armario" parent="." instance=ExtResource("7_k3sgk")]
+z_index = 9
+position = Vector2(404, -167)
+
+[node name="Alfombra" parent="." instance=ExtResource("8_n0uko")]
+z_index = 5
+position = Vector2(137, 330)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(475, 399)
+energy = 0.55
+blend_mode = 2
+shadow_enabled = true
+max_distance = 1.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.054902, 0.054902, 0.054902, 1)

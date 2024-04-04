@@ -1,5 +1,11 @@
 extends Node
 
+signal nu
+
+enum ModeMenu {
+	
+}
+
 var DATA_GAME = {
 	vida = 48,
 	locate = {
@@ -30,10 +36,23 @@ var DATA_GAME = {
 	}
 }
 
+var UI_DATA_INT = {
+	modeType = "MODE_WINDOWED"
+}
+
+var UI_DATA_GET = Addonsave.edit_data("ui_data", ".save")
 func _ready():
-	
 	print("INICIADO VARIABLES")
-	pass
+	if UI_DATA_GET == {	}:
+		get_window().mode = Window.MODE_WINDOWED
+		print("NO_UI_DATA")
+	else: 
+		UI_DATA_INT = UI_DATA_GET
+		var mode = UI_DATA_INT.modeType
+		if mode == "MODE_WINDOWED":
+			get_window().mode = Window.MODE_WINDOWED
+		if mode == "MODE_FULLSCREEN":
+			get_window().mode = Window.MODE_FULLSCREEN
 
 func SetData(data): 
 	print(data)

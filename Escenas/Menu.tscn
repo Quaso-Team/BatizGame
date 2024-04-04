@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6crbj7ni0a7r"]
+[gd_scene load_steps=11 format=3 uid="uid://c6crbj7ni0a7r"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Menu.gd" id="1_a51yr"]
 [ext_resource type="Texture2D" uid="uid://bwfu8a7hd3lqq" path="res://Assets/Menu/MenuBorrador.png" id="1_ww157"]
 [ext_resource type="Texture2D" uid="uid://n7whworx25bf" path="res://Assets/Menu/Botón puchado.png" id="2_6i27t"]
 [ext_resource type="Texture2D" uid="uid://br8hxq4j4efac" path="res://Assets/Menu/Botón sin puchar (1).png" id="3_j40x7"]
 [ext_resource type="AudioStream" uid="uid://cjdqylupkqb6e" path="res://Assets/Menu/title_screen.mp3" id="5_cqnyw"]
+[ext_resource type="PackedScene" uid="uid://bb58d4ux02lgn" path="res://Escenas/Assets/Interfaces/OptionsMenuMain.tscn" id="6_s1lxc"]
+[ext_resource type="PackedScene" uid="uid://d0x6q5ooccs3h" path="res://Escenas/Assets/Interfaces/OpcionsMenuVolumen.tscn" id="7_gnmj8"]
+
+[sub_resource type="Animation" id="Animation_ouc87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saliendo___:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Saliendo"]
+}
+
+[sub_resource type="Animation" id="Animation_3yu83"]
+resource_name = "new_animation"
+length = 3.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saliendo___:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.9, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Saliendo", "Saliendo.", "Saliendo..", "Saliendo..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sjvo"]
+_data = {
+"RESET": SubResource("Animation_ouc87"),
+"new_animation": SubResource("Animation_3yu83")
+}
 
 [node name="MainMenu" type="Node2D"]
 show_behind_parent = true
@@ -25,28 +65,41 @@ position = Vector2(577, 324)
 texture = ExtResource("1_ww157")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 255.0
-offset_bottom = 87.0
+offset_left = 75.0
+offset_top = 37.0
+offset_right = 426.0
+offset_bottom = 125.0
 rotation = 0.000141539
 auto_translate = false
 localize_numeral_system = false
 theme_override_font_sizes/font_size = 64
 text = "Batiz Game"
 
-[node name="Control" type="Control" parent="."]
+[node name="Saliendo___" type="Label" parent="."]
+visible = false
+offset_left = 4.0
+offset_top = -3.0
+offset_right = 355.0
+offset_bottom = 85.0
+rotation = 0.000141539
+auto_translate = false
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 32
+text = "Saliendo"
+
+[node name="Botones" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 44.0
-offset_bottom = 42.0
+offset_left = 5.0
+offset_top = -2.0
+offset_right = 45.0
+offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Botones"]
 custom_minimum_size = Vector2(23, 25)
 layout_direction = 1
+layout_mode = 0
 offset_left = 70.3
 offset_top = 167.0
 offset_right = 1094.3
@@ -57,7 +110,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 
-[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Botones/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -68,7 +121,7 @@ texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 texture_disabled = ExtResource("2_6i27t")
 
-[node name="TextureButton2" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="Botones/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -78,7 +131,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton3" type="TextureButton" parent="Botones/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -88,7 +141,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton4" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton4" type="TextureButton" parent="Botones/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -98,7 +151,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton5" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton5" type="TextureButton" parent="Botones/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -108,7 +161,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="TextureButton6" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton6" type="TextureButton" parent="Botones/VBoxContainer"]
 clip_contents = true
 layout_direction = 1
 layout_mode = 2
@@ -118,7 +171,7 @@ size_flags_stretch_ratio = 32.0
 texture_normal = ExtResource("3_j40x7")
 texture_pressed = ExtResource("2_6i27t")
 
-[node name="ButtonText" type="Label" parent="Control"]
+[node name="ButtonText" type="Label" parent="Botones"]
 layout_mode = 0
 offset_left = 89.0
 offset_top = 174.0
@@ -129,7 +182,7 @@ text = "Continuar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonText2" type="Label" parent="Control"]
+[node name="ButtonText2" type="Label" parent="Botones"]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 245.0
@@ -140,7 +193,7 @@ text = "Nueva partida"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonText3" type="Label" parent="Control"]
+[node name="ButtonText3" type="Label" parent="Botones"]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 313.0
@@ -151,7 +204,7 @@ text = "Cargar partida"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonText4" type="Label" parent="Control"]
+[node name="ButtonText4" type="Label" parent="Botones"]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 383.0
@@ -162,7 +215,7 @@ text = "Opciones"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonText5" type="Label" parent="Control"]
+[node name="ButtonText5" type="Label" parent="Botones"]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 456.0
@@ -173,7 +226,7 @@ text = "Creditos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonText6" type="Label" parent="Control"]
+[node name="ButtonText6" type="Label" parent="Botones"]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 527.0
@@ -187,6 +240,7 @@ vertical_alignment = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cqnyw")
 autoplay = true
+bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 y_sort_enabled = true
@@ -198,9 +252,37 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[connection signal="button_down" from="Control/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
-[connection signal="button_down" from="Control/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_button_down"]
-[connection signal="button_down" from="Control/VBoxContainer/TextureButton3" to="." method="_on_texture_button_3_button_down"]
-[connection signal="button_down" from="Control/VBoxContainer/TextureButton4" to="." method="_on_texture_button_4_button_down"]
-[connection signal="button_down" from="Control/VBoxContainer/TextureButton5" to="." method="_on_texture_button_5_button_down"]
-[connection signal="button_down" from="Control/VBoxContainer/TextureButton6" to="." method="_on_texture_button_6_button_down"]
+[node name="Control" parent="." instance=ExtResource("6_s1lxc")]
+visible = false
+offset_left = 385.0
+offset_top = 118.0
+offset_right = 385.0
+offset_bottom = 118.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Control2" parent="." instance=ExtResource("7_gnmj8")]
+visible = false
+offset_left = 419.0
+offset_top = 175.0
+offset_right = 419.0
+offset_bottom = 175.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2sjvo")
+}
+
+[connection signal="button_down" from="Botones/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="button_down" from="Botones/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_button_down"]
+[connection signal="button_down" from="Botones/VBoxContainer/TextureButton3" to="." method="_on_texture_button_3_button_down"]
+[connection signal="button_down" from="Botones/VBoxContainer/TextureButton4" to="." method="_on_texture_button_4_button_down"]
+[connection signal="button_down" from="Botones/VBoxContainer/TextureButton5" to="." method="_on_texture_button_5_button_down"]
+[connection signal="button_down" from="Botones/VBoxContainer/TextureButton6" to="." method="_on_texture_button_6_button_down"]
+[connection signal="exit_menu" from="Control" to="." method="_on_control_exit_menu"]
+[connection signal="exit_vol_button" from="Control" to="." method="_on_control_exit_vol_button"]
+[connection signal="exit_esc_menu" from="Control2" to="." method="_on_control_2_exit_esc_menu"]
+[connection signal="exit_menu" from="Control2" to="." method="_on_control_2_exit_menu"]
+[connection signal="hidden" from="Control2" to="." method="_on_control_2_hidden"]

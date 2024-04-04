@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwjkvhwnr3mt7"]
 
 [ext_resource type="Script" path="res://Scripts/Personajes/Nataly.gd" id="1_tlc0k"]
-[ext_resource type="Texture2D" uid="uid://bcc2n628x7ps" path="res://Assets/Personajes/friskxd.png" id="2_0sgun"]
+[ext_resource type="Texture2D" uid="uid://cner1mnrn2gk3" path="res://Assets/Personajes/NBXFX.png" id="2_insjk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkwqd"]
 radius = 294.58
@@ -11,9 +11,9 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_tlc0k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-12, -172)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_0sgun")
+position = Vector2(8, -204)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_insjk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)

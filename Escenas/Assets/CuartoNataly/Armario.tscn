@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://u7ms61di4yc6"]
+
+[ext_resource type="Texture2D" uid="uid://b7uhiuh3oo00c" path="res://Assets/NatalyRoom/BetaArmarioV1.png" id="1_gpxbx"]
+[ext_resource type="Script" path="res://Scripts/Escenas/Cuarto/ArmarioMenu.gd" id="1_pnvwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv1qb"]
+size = Vector2(512, 522)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbyag"]
+size = Vector2(516, 66)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_pnvwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gpxbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 251)
+shape = SubResource("RectangleShape2D_iv1qb")
+debug_color = Color(0.643137, 0.517647, 0.227451, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 548)
+shape = SubResource("RectangleShape2D_kbyag")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

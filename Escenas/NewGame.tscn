@@ -89,9 +89,24 @@ texture_pressed = ExtResource("4_4gj4a")
 texture_disabled = ExtResource("4_4gj4a")
 stretch_mode = 0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.5
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Seguro que quieres borrar?"
+position = Vector2i(425, 228)
+size = Vector2i(300, 80)
+keep_title_visible = false
+content_scale_mode = 1
+ok_button_text = "Si"
+cancel_button_text = "Cancelar"
+
 [connection signal="button_down" from="Control/HBoxContainer/Slot1" to="." method="_on_slot_1_button_down"]
 [connection signal="button_down" from="Control/HBoxContainer/Slot2" to="." method="_on_slot_2_button_down"]
 [connection signal="button_down" from="Control/HBoxContainer/Slot3" to="." method="_on_slot_3_button_down"]
 [connection signal="button_down" from="Control/HBoxContainer2/DelButton1" to="." method="_on_del_button_1_button_down"]
 [connection signal="button_down" from="Control/HBoxContainer2/DelButton2" to="." method="_on_del_button_2_button_down"]
 [connection signal="button_down" from="Control/HBoxContainer2/DelButton3" to="." method="_on_del_button_3_button_down"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="close_requested" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_close_requested"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

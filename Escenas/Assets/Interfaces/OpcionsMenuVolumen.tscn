@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0x6q5ooccs3h"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/OpcionsMenuVolumen.gd" id="1_b7xj4"]
+[ext_resource type="Theme" uid="uid://b22lrn5tkqlv4" path="res://Assets/MinimalUI/MinimalUI.tres" id="1_gt0d3"]
+[ext_resource type="Texture2D" uid="uid://br8hxq4j4efac" path="res://Assets/Menu/Botón sin puchar (1).png" id="3_mv3sk"]
+[ext_resource type="PackedScene" uid="uid://cts5bggsev415" path="res://Escenas/Assets/Interfaces/slider_volume.tscn" id="3_wpg73"]
+[ext_resource type="Texture2D" uid="uid://n7whworx25bf" path="res://Assets/Menu/Botón puchado.png" id="4_74l8u"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b7xj4")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 24.0
+offset_right = 296.0
+offset_bottom = 312.0
+theme = ExtResource("1_gt0d3")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 312.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 320.0
+theme = ExtResource("1_gt0d3")
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Music"
+
+[node name="SliderVolume" parent="Control/VBoxContainer" instance=ExtResource("3_wpg73")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Volumen"
+
+[node name="SliderVolume2" parent="Control/VBoxContainer" instance=ExtResource("3_wpg73")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_gt0d3")
+theme_override_font_sizes/font_size = 32
+text = "SFX"
+
+[node name="SliderVolume3" parent="Control/VBoxContainer" instance=ExtResource("3_wpg73")]
+layout_mode = 2
+theme = ExtResource("1_gt0d3")
+bus_name = "Sfx"
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Volver"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control/VBoxContainer/Button"]
+visible = false
+position = Vector2(80, -73)
+scale = Vector2(0.148437, 0.15625)
+texture_normal = ExtResource("3_mv3sk")
+texture_pressed = ExtResource("4_74l8u")
+
+[connection signal="button_down" from="Control/VBoxContainer/Button" to="." method="_on_button_button_down"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8fjlbycl5jvc"]
+
+[ext_resource type="Script" path="res://Scripts/Escenas/Cuarto/Alfombra.gd" id="1_djjsf"]
+[ext_resource type="Texture2D" uid="uid://t5gpj751cbr0" path="res://Assets/NatalyRoom/BetaAlfombraV1.png" id="1_terka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yetij"]
+size = Vector2(509.5, 382.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5h7n7"]
+
+[node name="Alfombra" type="StaticBody2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_djjsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_terka")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_yetij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_5h7n7")
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
