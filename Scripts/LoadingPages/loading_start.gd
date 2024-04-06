@@ -8,13 +8,10 @@ func _ready():
 	temp.start()
 	pass # Replace with function body.
 
-
 func _on_timer_timeout():
 	var data_game = Variables.DATA_GAME
 	var escene = data_game.locate.escene
 	print(escene)
-	
-	Pause.notPause = false
 	
 	match escene:
 		"cuarto_nataly":
@@ -23,4 +20,3 @@ func _on_timer_timeout():
 			get_tree().change_scene_to_file("res://Escenas/NewGame.tscn")
 		_: 
 			print('null')
-			Pause.notPause = true

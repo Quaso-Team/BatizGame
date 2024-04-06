@@ -5,6 +5,7 @@ signal exit_menu
 # Called when the node enters the scene tree for the first time.
 @onready var FullWindow = $Panel/PanelContainer/CheckBox
 func _ready():
+	
 	var mode = Variables.UI_DATA_GET
 	print(mode)
 	if mode == {	}:

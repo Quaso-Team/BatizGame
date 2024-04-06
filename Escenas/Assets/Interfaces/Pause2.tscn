@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://n7whworx25bf" path="res://Assets/Menu/Botón puchado.png" id="2_kt1qn"]
 [ext_resource type="PackedScene" uid="uid://d0x6q5ooccs3h" path="res://Escenas/Assets/Interfaces/OpcionsMenuVolumen.tscn" id="4_eoare"]
 
-[node name="Control" type="Control"]
+[node name="Pausa" type="Control"]
+z_index = 90
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_xe43x")
 
 [node name="Panel" type="Panel" parent="."]
+z_index = 91
 layout_mode = 0
 offset_left = -106.0
 offset_top = -31.0
@@ -26,6 +28,7 @@ offset_right = 686.0
 offset_bottom = 489.0
 
 [node name="Opciones" type="VBoxContainer" parent="Panel"]
+z_index = 92
 layout_direction = 1
 layout_mode = 0
 offset_left = 40.0
@@ -36,6 +39,7 @@ scale = Vector2(0.25, 0.25)
 theme_override_constants/separation = 11
 
 [node name="Personajes" type="TextureButton" parent="Panel/Opciones"]
+z_index = 92
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 2
@@ -53,6 +57,7 @@ theme_override_font_sizes/font_size = 124
 text = "Personaje"
 
 [node name="Objetos" type="TextureButton" parent="Panel/Opciones"]
+z_index = 92
 layout_mode = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
@@ -69,6 +74,7 @@ theme_override_font_sizes/font_size = 124
 text = "Objetos"
 
 [node name="Opciones" type="TextureButton" parent="Panel/Opciones"]
+z_index = 92
 layout_mode = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
@@ -85,6 +91,7 @@ theme_override_font_sizes/font_size = 124
 text = "Opciones"
 
 [node name="Guardar partida" type="TextureButton" parent="Panel/Opciones"]
+z_index = 92
 layout_mode = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("1_lcb5x")
@@ -128,6 +135,7 @@ offset_bottom = 23.0
 text = "En desarrollo"
 
 [node name="Opciones" type="Panel" parent="Panel/PanelContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Volumen" parent="Panel/PanelContainer/Opciones" instance=ExtResource("4_eoare")]

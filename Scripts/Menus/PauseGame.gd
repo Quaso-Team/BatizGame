@@ -1,10 +1,12 @@
 extends Control
 var notPause = true
+var pauseIsActive = false
 
 @onready var Parent = $"."
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print("Pausa activa")
+	Parent.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,10 +46,11 @@ func _on_guardar_partida_pressed():
 
 func _input(event):
 	var buttonPress = event.is_action_pressed("pause")
-	if notPause == false:
-		if buttonPress == true:
+	if buttonPress == true:
+		if pauseIsActive == false:
+			print('active')
 			Parent.show()
+			pauseIsActive = true
 		else:
+			pauseIsActive = false
 			Parent.hide()
-	else:
-		Parent.hide()

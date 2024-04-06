@@ -13,6 +13,15 @@ var DATA_GAME = {
 		x = 0,
 		y = 0,
 	},
+	time = {
+		hour = 07,
+		minute = 00,
+		seconds = 00,
+		day = 00,
+		mes = 01,
+		year = 2024,
+		tick = 0
+	},
 	inv = {
 		consumible = [
 			null
@@ -53,7 +62,8 @@ func _ready():
 			get_window().mode = Window.MODE_WINDOWED
 		if mode == "MODE_FULLSCREEN":
 			get_window().mode = Window.MODE_FULLSCREEN
-
+			
+	
 func SetData(data): 
 	print(data)
 	DATA_GAME = data
