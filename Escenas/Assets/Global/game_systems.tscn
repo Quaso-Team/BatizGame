@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvqwmo0q3sy24"]
+
+[ext_resource type="Script" path="res://Scripts/Global/GameSystems.gd" id="1_bpi4x"]
+[ext_resource type="PackedScene" uid="uid://cv7a4260hcgxm" path="res://Escenas/Assets/Global/TimeSystem.tscn" id="2_nmbil"]
+[ext_resource type="PackedScene" uid="uid://chmbb5l58ws38" path="res://Escenas/Assets/Global/MobileControls.tscn" id="3_p2jfa"]
+
+[node name="GameSystems" type="Node"]
+script = ExtResource("1_bpi4x")
+
+[node name="Tiempo" parent="." instance=ExtResource("2_nmbil")]
+
+[node name="Variables" type="Node" parent="."]
+
+[node name="Controles" parent="." instance=ExtResource("3_p2jfa")]

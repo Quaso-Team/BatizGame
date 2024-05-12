@@ -1,26 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://da3lpokoxkc0o"]
+[gd_scene load_steps=8 format=3 uid="uid://da3lpokoxkc0o"]
 
 [ext_resource type="Texture2D" uid="uid://cn5luhh76i3m8" path="res://Assets/NatalyRoom/BETA_NIGHTTABLEv12.png" id="1_h8lbk"]
+[ext_resource type="Script" path="res://Scripts/Escenas/Cuarto/Mesita.gd" id="1_y7kxh"]
 [ext_resource type="Texture2D" uid="uid://cmpovg7jym248" path="res://Assets/NatalyRoom/BETA_NIGHTTABLEv13.png" id="2_sdirp"]
 
 [sub_resource type="Gradient" id="Gradient_thlys"]
-offsets = PackedFloat32Array(0.0189873, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.0189873, 0.664557, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.735484, 0.735484, 0.735484, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_k5vt8"]
 gradient = SubResource("Gradient_thlys")
 use_hdr = true
 fill = 1
-fill_from = Vector2(0.518018, 0.536036)
+fill_from = Vector2(0.509009, 0.5)
 fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_smlch"]
+offsets = PackedFloat32Array(0, 0.487342, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.601266, 0.601266, 0.601266, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dyxup"]
+gradient = SubResource("Gradient_smlch")
+width = 254
+height = 254
+fill = 1
+fill_from = Vector2(0.509009, 0.486486)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_y7kxh")
 
 [node name="LamparaLuz" type="Sprite2D" parent="."]
 texture = ExtResource("1_h8lbk")
 
 [node name="LamparaApagada" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_sdirp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -32,3 +46,9 @@ position = Vector2(82.25, 163.25)
 scale = Vector2(33.6328, 32.4141)
 energy = 0.55
 texture = SubResource("GradientTexture2D_k5vt8")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(82.25, 163.25)
+scale = Vector2(33.6328, 32.4141)
+energy = 0.55
+texture = SubResource("GradientTexture2D_dyxup")

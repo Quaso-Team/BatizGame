@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6crbj7ni0a7r"]
+[gd_scene load_steps=12 format=3 uid="uid://c6crbj7ni0a7r"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Menu.gd" id="1_a51yr"]
 [ext_resource type="Texture2D" uid="uid://bwfu8a7hd3lqq" path="res://Assets/Menu/MenuBorrador.png" id="1_ww157"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cjdqylupkqb6e" path="res://Assets/Menu/title_screen.mp3" id="5_cqnyw"]
 [ext_resource type="PackedScene" uid="uid://bb58d4ux02lgn" path="res://Escenas/Assets/Interfaces/OptionsMenuMain.tscn" id="6_s1lxc"]
 [ext_resource type="PackedScene" uid="uid://d0x6q5ooccs3h" path="res://Escenas/Assets/Interfaces/OpcionsMenuVolumen.tscn" id="7_gnmj8"]
+[ext_resource type="Script" path="res://Escenas/Prueba.gd" id="8_5kac7"]
 
 [sub_resource type="Animation" id="Animation_ouc87"]
 length = 0.001
@@ -274,6 +275,13 @@ wait_time = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_2sjvo")
 }
+
+[node name="Prueba" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "dawdd"
+script = ExtResource("8_5kac7")
 
 [connection signal="button_down" from="Botones/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
 [connection signal="button_down" from="Botones/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_button_down"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0fo6fw7n08q8"]
+[gd_scene load_steps=10 format=3 uid="uid://d0fo6fw7n08q8"]
 
 [ext_resource type="Script" path="res://Scripts/Escenas/Pause.gd" id="1_p6u5k"]
 [ext_resource type="PackedScene" uid="uid://w8x3ywc2ox47" path="res://Escenas/Assets/CuartoNataly/PisoYPared.tscn" id="2_eff7c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bh4tlpu4xl5tm" path="res://Escenas/Assets/CuartoNataly/Escritorio.tscn" id="5_qpkxm"]
 [ext_resource type="PackedScene" uid="uid://u7ms61di4yc6" path="res://Escenas/Assets/CuartoNataly/Armario.tscn" id="7_k3sgk"]
 [ext_resource type="PackedScene" uid="uid://b8fjlbycl5jvc" path="res://Escenas/Assets/CuartoNataly/Alfombra.tscn" id="8_n0uko"]
+[ext_resource type="Script" path="res://Scripts/Escenas/Cuarto/MobileLight.gd" id="9_hboq0"]
 
 [node name="CuartoNataly" type="Node2D"]
 y_sort_enabled = true
@@ -15,10 +16,10 @@ position = Vector2(264, 286)
 script = ExtResource("1_p6u5k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1025.0
-offset_top = -856.0
-offset_right = 1668.0
-offset_bottom = 829.0
+offset_left = -1013.0
+offset_top = -665.0
+offset_right = 1680.0
+offset_bottom = 1020.0
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -43,7 +44,7 @@ position = Vector2(122, -71)
 
 [node name="Escritorio" parent="." instance=ExtResource("5_qpkxm")]
 z_index = 5
-position = Vector2(494, 45)
+position = Vector2(490, 45)
 
 [node name="Armario" parent="." instance=ExtResource("7_k3sgk")]
 z_index = 9
@@ -54,11 +55,25 @@ z_index = 5
 position = Vector2(137, 330)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(475, 399)
+position = Vector2(-118, 269)
 energy = 0.55
 blend_mode = 2
 shadow_enabled = true
 max_distance = 1.0
+script = ExtResource("9_hboq0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-352, -289)
 color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[node name="Label" type="Label" parent="."]
+process_priority = 9
+top_level = true
+z_index = 99
+z_as_relative = false
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 230.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 64
+text = "hh:mm"

@@ -1,16 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwjkvhwnr3mt7"]
+[gd_scene load_steps=8 format=3 uid="uid://dwjkvhwnr3mt7"]
 
 [ext_resource type="Script" path="res://Scripts/Personajes/Nataly.gd" id="1_tlc0k"]
-[ext_resource type="Texture2D" uid="uid://cner1mnrn2gk3" path="res://Assets/Personajes/NBXFX.png" id="2_insjk"]
+[ext_resource type="Texture2D" uid="uid://cner1mnrn2gk3" path="res://Assets/Personajes/Nataly/NBXFX.png" id="2_insjk"]
+[ext_resource type="Script" path="res://Scripts/Personajes/Position.gd" id="3_2xowt"]
+[ext_resource type="Texture2D" uid="uid://cmuclgl65sv4" path="res://Assets/Personajes/Nataly/NACF1.png" id="4_s47wh"]
+[ext_resource type="Texture2D" uid="uid://cpflj2mkqy5ym" path="res://Assets/Personajes/Nataly/NACF2.png" id="5_wb6hy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkwqd"]
-radius = 294.58
+radius = 300.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mq40r"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("4_s47wh")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_wb6hy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Nataly" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_tlc0k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Stop" type="Sprite2D" parent="."]
 position = Vector2(8, -204)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_insjk")
@@ -18,3 +35,16 @@ texture = ExtResource("2_insjk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_dkwqd")
+
+[node name="Position" type="Timer" parent="."]
+autostart = true
+script = ExtResource("3_2xowt")
+
+[node name="Frente" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -204)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mq40r")
+frame = 1
+frame_progress = 1.0
+
+[connection signal="timeout" from="Position" to="Position" method="_on_timeout"]

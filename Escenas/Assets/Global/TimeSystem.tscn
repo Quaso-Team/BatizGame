@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv7a4260hcgxm"]
+[gd_scene load_steps=3 format=3 uid="uid://cv7a4260hcgxm"]
 
 [ext_resource type="Script" path="res://Scripts/Global/TimeSystem.gd" id="1_4snfd"]
+[ext_resource type="Script" path="res://Scripts/Escenas/Autosave.gd" id="2_yk6my"]
 
 [node name="Tiempo" type="Node"]
 script = ExtResource("1_4snfd")
@@ -10,4 +11,12 @@ process_mode = 3
 wait_time = 0.167
 autostart = true
 
+[node name="Autosave" type="Node" parent="."]
+script = ExtResource("2_yk6my")
+
+[node name="AutoSaveTimer" type="Timer" parent="Autosave"]
+wait_time = 300.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Autosave/AutoSaveTimer" to="Autosave" method="_on_auto_save_timer_timeout"]
