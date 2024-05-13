@@ -2,16 +2,16 @@ extends Node
 var notPause = true
 var pauseIsActive = false
 
-@onready var Parent = $"."
+@onready var Parent = $"UI"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Pausa activa")
 	Parent.hide()
 	
-@onready var PersonajesPanel = $Panel/PanelContainer/Personajes
-@onready var ObjetosPanel = $Panel/PanelContainer/Objetos
-@onready var OpcionesPanel = $Panel/PanelContainer/Opciones
-@onready var GuardarPartidaPanel = $Panel/PanelContainer/GuardarPartida
+@onready var PersonajesPanel = $UI/Panel/PanelContainer/Personajes
+@onready var ObjetosPanel = $UI/Panel/PanelContainer/Objetos
+@onready var OpcionesPanel = $UI/Panel/PanelContainer/Opciones
+@onready var GuardarPartidaPanel = $UI/Panel/PanelContainer/GuardarPartida
 func _on_personajes_pressed():
 	PersonajesPanel.show()
 	ObjetosPanel.hide()
@@ -44,13 +44,13 @@ func _input(event):
 	if buttonPress == true:
 		if pauseIsActive == false:
 			print('active')
-			Parent.show()
+			Parent.visible = true
 			pauseIsActive = true
 			Engine.time_scale = 0
 			TimeSystem.pause = true
 		else:
 			pauseIsActive = false
-			Parent.hide()
+			Parent.visible = false
 			print('false')
 			Engine.time_scale = 1
 			TimeSystem.pause = false

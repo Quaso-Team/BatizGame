@@ -3,7 +3,7 @@ extends Node
 signal nu
 
 var OS_NAME = OS.get_name()
-
+var isControl = false
 
 var DATA_GAME = {
 	vida = 48,
