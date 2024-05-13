@@ -1,10 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwjkvhwnr3mt7"]
+[gd_scene load_steps=20 format=3 uid="uid://dwjkvhwnr3mt7"]
 
 [ext_resource type="Script" path="res://Scripts/Personajes/Nataly.gd" id="1_tlc0k"]
 [ext_resource type="Texture2D" uid="uid://cner1mnrn2gk3" path="res://Assets/Personajes/Nataly/NBXFX.png" id="2_insjk"]
 [ext_resource type="Script" path="res://Scripts/Personajes/Position.gd" id="3_2xowt"]
 [ext_resource type="Texture2D" uid="uid://cmuclgl65sv4" path="res://Assets/Personajes/Nataly/NACF1.png" id="4_s47wh"]
 [ext_resource type="Texture2D" uid="uid://cpflj2mkqy5ym" path="res://Assets/Personajes/Nataly/NACF2.png" id="5_wb6hy"]
+[ext_resource type="Texture2D" uid="uid://wciqfkm8ggft" path="res://Assets/Personajes/Nataly/NACT1.png" id="6_fakor"]
+[ext_resource type="Texture2D" uid="uid://brgkbekk1tavq" path="res://Assets/Personajes/Nataly/NACT2.png" id="7_pvc3f"]
+[ext_resource type="Texture2D" uid="uid://b45whf847u2xe" path="res://Assets/Personajes/Nataly/NBXTX.png" id="8_n4w17"]
+[ext_resource type="Texture2D" uid="uid://c80vww0jrqcyg" path="res://Assets/Personajes/Nataly/NACI1.png" id="9_dw7xt"]
+[ext_resource type="Texture2D" uid="uid://cnd1ks8m5hmuy" path="res://Assets/Personajes/Nataly/NACI2.png" id="10_qp453"]
+[ext_resource type="Texture2D" uid="uid://cdw4qe3gmrtlq" path="res://Assets/Personajes/Nataly/NBXIX.png" id="11_nw4up"]
+[ext_resource type="Texture2D" uid="uid://dww030hag8dqd" path="res://Assets/Personajes/Nataly/NACD1.png" id="12_neeeu"]
+[ext_resource type="Texture2D" uid="uid://dfqejp54ae6q3" path="res://Assets/Personajes/Nataly/NACD2.png" id="13_8twv3"]
+[ext_resource type="Texture2D" uid="uid://idb03axbgelp" path="res://Assets/Personajes/Nataly/NBXDX.png" id="14_0tica"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkwqd"]
 radius = 300.0
@@ -12,27 +21,65 @@ radius = 300.0
 [sub_resource type="SpriteFrames" id="SpriteFrames_mq40r"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("4_s47wh")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("5_wb6hy")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2557t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fakor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pvc3f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1um33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dw7xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qp453")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hwax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_neeeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8twv3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
 }]
 
 [node name="Nataly" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_tlc0k")
 
-[node name="Stop" type="Sprite2D" parent="."]
-position = Vector2(8, -204)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_insjk")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 100
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_dkwqd")
 
@@ -40,11 +87,45 @@ shape = SubResource("CircleShape2D_dkwqd")
 autostart = true
 script = ExtResource("3_2xowt")
 
-[node name="Frente" type="AnimatedSprite2D" parent="."]
+[node name="Frente" type="Node2D" parent="."]
 position = Vector2(8, -204)
 scale = Vector2(1.5, 1.5)
+
+[node name="Frente" type="AnimatedSprite2D" parent="Frente"]
 sprite_frames = SubResource("SpriteFrames_mq40r")
-frame = 1
-frame_progress = 1.0
+autoplay = "default"
+
+[node name="FrenteStop" type="Sprite2D" parent="Frente"]
+texture = ExtResource("2_insjk")
+
+[node name="Espalda" type="Node2D" parent="."]
+position = Vector2(-12, -200)
+scale = Vector2(1.5, 1.5)
+
+[node name="Espalda" type="AnimatedSprite2D" parent="Espalda"]
+sprite_frames = SubResource("SpriteFrames_2557t")
+
+[node name="EspaldaStop" type="Sprite2D" parent="Espalda"]
+texture = ExtResource("8_n4w17")
+
+[node name="Izquierda" type="Node2D" parent="."]
+position = Vector2(-8, -216)
+scale = Vector2(1.5, 1.5)
+
+[node name="Izquierda" type="AnimatedSprite2D" parent="Izquierda"]
+sprite_frames = SubResource("SpriteFrames_1um33")
+
+[node name="IzquierdaStop" type="Sprite2D" parent="Izquierda"]
+texture = ExtResource("11_nw4up")
+
+[node name="Derecha" type="Node2D" parent="."]
+position = Vector2(0, -220)
+scale = Vector2(1.5, 1.5)
+
+[node name="Derecha" type="AnimatedSprite2D" parent="Derecha"]
+sprite_frames = SubResource("SpriteFrames_2hwax")
+
+[node name="DerechaStop" type="Sprite2D" parent="Derecha"]
+texture = ExtResource("14_0tica")
 
 [connection signal="timeout" from="Position" to="Position" method="_on_timeout"]

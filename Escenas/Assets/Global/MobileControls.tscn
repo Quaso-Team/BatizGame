@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://chmbb5l58ws38"]
+[gd_scene load_steps=13 format=3 uid="uid://chmbb5l58ws38"]
 
 [ext_resource type="Script" path="res://Scripts/Global/MobileButtons.gd" id="1_fm4kg"]
 [ext_resource type="Texture2D" uid="uid://bl7va2cvhkn7o" path="res://Assets/Mobile/keyboard_67.png" id="2_ixk6l"]
 [ext_resource type="Texture2D" uid="uid://bu04dlwk7pnhs" path="res://Assets/Mobile/keyboard_168.png" id="3_khwy0"]
 [ext_resource type="Texture2D" uid="uid://c4y4wuv1a0vjn" path="res://Assets/Mobile/keyboard_73.png" id="3_u6r3n"]
 [ext_resource type="Texture2D" uid="uid://dfvunnc6gto34" path="res://Assets/Mobile/keyboard_174.png" id="4_7thac"]
+[ext_resource type="PackedScene" uid="uid://b0mtafqciayco" path="res://Escenas/Assets/Interfaces/joystick.tscn" id="4_hm4xt"]
 [ext_resource type="Texture2D" uid="uid://c2385fixuo2ns" path="res://Assets/Mobile/keyboard_72.png" id="5_s5v4t"]
 [ext_resource type="Texture2D" uid="uid://dcompo2g47tmf" path="res://Assets/Mobile/keyboard_173.png" id="6_w1kl0"]
 [ext_resource type="Texture2D" uid="uid://ckglstyqqucsg" path="res://Assets/Mobile/keyboard_71.png" id="7_e1nso"]
@@ -20,54 +21,74 @@ position = Vector2(-128, -68)
 script = ExtResource("1_fm4kg")
 metadata/_edit_horizontal_guides_ = [170.0]
 
-[node name="Pausa" type="TouchScreenButton" parent="."]
-position = Vector2(144, 79)
-scale = Vector2(3, 3)
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Pausa" type="TouchScreenButton" parent="UI"]
+position = Vector2(16, 11)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_ixk6l")
 texture_pressed = ExtResource("3_khwy0")
 action = "pause"
 visibility_mode = 1
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-128, -128)
-scale = Vector2(3, 3)
-
-[node name="Izquierda" type="TouchScreenButton" parent="Node2D"]
-position = Vector2(91, 213)
+[node name="Izquierda" type="TouchScreenButton" parent="UI"]
+visible = false
+position = Vector2(20, 495)
+scale = Vector2(2.25, 2.25)
 texture_normal = ExtResource("3_u6r3n")
 texture_pressed = ExtResource("4_7thac")
+action = "ui_left"
 visibility_mode = 1
 
-[node name="Derecha" type="TouchScreenButton" parent="Node2D"]
-position = Vector2(160, 213)
+[node name="Derecha" type="TouchScreenButton" parent="UI"]
+visible = false
+position = Vector2(160, 495)
+scale = Vector2(2.25, 2.25)
 texture_normal = ExtResource("5_s5v4t")
 texture_pressed = ExtResource("6_w1kl0")
+action = "ui_right"
 visibility_mode = 1
 
-[node name="Abajo" type="TouchScreenButton" parent="Node2D"]
-position = Vector2(126, 245)
+[node name="Abajo" type="TouchScreenButton" parent="UI"]
+visible = false
+position = Vector2(91, 556)
+scale = Vector2(2.25, 2.25)
 texture_normal = ExtResource("7_e1nso")
 texture_pressed = ExtResource("8_xhy11")
+action = "ui_down"
 visibility_mode = 1
 
-[node name="Arriba" type="TouchScreenButton" parent="Node2D"]
-position = Vector2(125, 181)
+[node name="Arriba" type="TouchScreenButton" parent="UI"]
+visible = false
+position = Vector2(90, 427)
+scale = Vector2(2.25, 2.25)
 texture_normal = ExtResource("9_b3ho1")
 texture_pressed = ExtResource("10_pi283")
+action = "ui_up"
 visibility_mode = 1
+
+[node name="Node2D" type="Node2D" parent="UI"]
+visible = false
+position = Vector2(-256, -196)
+scale = Vector2(3, 3)
+
+[node name="Joystick" parent="UI/Node2D" instance=ExtResource("4_hm4xt")]
+position = Vector2(127, 242)
+scale = Vector2(0.166667, 0.166667)
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(706, 394)
 
-[connection signal="pressed" from="Pausa" to="." method="_on_pausa_pressed"]
-[connection signal="released" from="Pausa" to="." method="_on_pausa_released"]
-[connection signal="pressed" from="Node2D/Izquierda" to="." method="_on_izquierda_pressed"]
-[connection signal="released" from="Node2D/Izquierda" to="." method="_on_izquierda_released"]
-[connection signal="pressed" from="Node2D/Derecha" to="." method="_on_derecha_pressed"]
-[connection signal="released" from="Node2D/Derecha" to="." method="_on_derecha_released"]
-[connection signal="pressed" from="Node2D/Abajo" to="." method="_on_abajo_pressed"]
-[connection signal="released" from="Node2D/Abajo" to="." method="_on_abajo_released"]
-[connection signal="pressed" from="Node2D/Arriba" to="." method="_on_arriba_pressed"]
-[connection signal="released" from="Node2D/Arriba" to="." method="_on_arriba_released"]
+[connection signal="pressed" from="UI/Pausa" to="." method="_on_pausa_pressed"]
+[connection signal="released" from="UI/Pausa" to="." method="_on_pausa_released"]
+[connection signal="pressed" from="UI/Izquierda" to="." method="_on_izquierda_pressed"]
+[connection signal="released" from="UI/Izquierda" to="." method="_on_izquierda_released"]
+[connection signal="pressed" from="UI/Derecha" to="." method="_on_derecha_pressed"]
+[connection signal="released" from="UI/Derecha" to="." method="_on_derecha_released"]
+[connection signal="pressed" from="UI/Abajo" to="." method="_on_abajo_pressed"]
+[connection signal="released" from="UI/Abajo" to="." method="_on_abajo_released"]
+[connection signal="pressed" from="UI/Arriba" to="." method="_on_arriba_pressed"]
+[connection signal="released" from="UI/Arriba" to="." method="_on_arriba_released"]
+[connection signal="data_move" from="UI/Node2D/Joystick" to="." method="_on_joystick_data_move"]

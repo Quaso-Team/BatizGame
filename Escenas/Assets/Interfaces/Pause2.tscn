@@ -18,9 +18,10 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_xe43x")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
 z_index = 91
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,7 +34,7 @@ offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Opciones" type="VBoxContainer" parent="Panel"]
+[node name="Opciones" type="VBoxContainer" parent="UI/Panel"]
 z_index = 92
 layout_direction = 1
 layout_mode = 0
@@ -44,7 +45,7 @@ offset_bottom = 2016.0
 scale = Vector2(0.25, 0.25)
 theme_override_constants/separation = 11
 
-[node name="Personajes" type="TextureButton" parent="Panel/Opciones"]
+[node name="Personajes" type="TextureButton" parent="UI/Panel/Opciones"]
 z_index = 92
 layout_mode = 2
 size_flags_horizontal = 8
@@ -53,7 +54,7 @@ texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
 
-[node name="Label" type="Label" parent="Panel/Opciones/Personajes"]
+[node name="Label" type="Label" parent="UI/Panel/Opciones/Personajes"]
 layout_mode = 0
 offset_left = 56.0
 offset_right = 689.0
@@ -62,7 +63,7 @@ scale = Vector2(1.12068, 1.25487)
 theme_override_font_sizes/font_size = 124
 text = "Personaje"
 
-[node name="Objetos" type="TextureButton" parent="Panel/Opciones"]
+[node name="Objetos" type="TextureButton" parent="UI/Panel/Opciones"]
 z_index = 92
 layout_mode = 2
 size_flags_vertical = 2
@@ -70,7 +71,7 @@ texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
 
-[node name="Label" type="Label" parent="Panel/Opciones/Objetos"]
+[node name="Label" type="Label" parent="UI/Panel/Opciones/Objetos"]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 30.0
@@ -79,7 +80,7 @@ offset_bottom = 200.0
 theme_override_font_sizes/font_size = 124
 text = "Objetos"
 
-[node name="Opciones" type="TextureButton" parent="Panel/Opciones"]
+[node name="Opciones" type="TextureButton" parent="UI/Panel/Opciones"]
 z_index = 92
 layout_mode = 2
 size_flags_vertical = 2
@@ -87,7 +88,7 @@ texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
 
-[node name="Label" type="Label" parent="Panel/Opciones/Opciones"]
+[node name="Label" type="Label" parent="UI/Panel/Opciones/Opciones"]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 35.0
@@ -96,7 +97,7 @@ offset_bottom = 205.0
 theme_override_font_sizes/font_size = 124
 text = "Opciones"
 
-[node name="Guardar partida" type="TextureButton" parent="Panel/Opciones"]
+[node name="Guardar partida" type="TextureButton" parent="UI/Panel/Opciones"]
 z_index = 92
 layout_mode = 2
 size_flags_vertical = 2
@@ -104,7 +105,7 @@ texture_normal = ExtResource("1_lcb5x")
 texture_pressed = ExtResource("2_kt1qn")
 texture_disabled = ExtResource("2_kt1qn")
 
-[node name="Label" type="Label" parent="Panel/Opciones/Guardar partida"]
+[node name="Label" type="Label" parent="UI/Panel/Opciones/Guardar partida"]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 56.0
@@ -113,38 +114,38 @@ offset_bottom = 221.0
 theme_override_font_sizes/font_size = 110
 text = "Guardar Partida"
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/Panel"]
 layout_mode = 0
 offset_left = 328.0
 offset_top = 16.0
 offset_right = 760.0
 offset_bottom = 504.0
 
-[node name="Personajes" type="Panel" parent="Panel/PanelContainer"]
+[node name="Personajes" type="Panel" parent="UI/Panel/PanelContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/PanelContainer/Personajes"]
+[node name="Label" type="Label" parent="UI/Panel/PanelContainer/Personajes"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "En desarrollo"
 
-[node name="Objetos" type="Panel" parent="Panel/PanelContainer"]
+[node name="Objetos" type="Panel" parent="UI/Panel/PanelContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/PanelContainer/Objetos"]
+[node name="Label" type="Label" parent="UI/Panel/PanelContainer/Objetos"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "En desarrollo"
 
-[node name="Opciones" type="Panel" parent="Panel/PanelContainer"]
+[node name="Opciones" type="Panel" parent="UI/Panel/PanelContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Volumen" parent="Panel/PanelContainer/Opciones" instance=ExtResource("4_eoare")]
+[node name="Volumen" parent="UI/Panel/PanelContainer/Opciones" instance=ExtResource("4_eoare")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
@@ -156,11 +157,11 @@ offset_right = 412.0
 offset_bottom = 486.0
 scale = Vector2(1.5, 1.5)
 
-[node name="GuardarPartida" type="Panel" parent="Panel/PanelContainer"]
+[node name="GuardarPartida" type="Panel" parent="UI/Panel/PanelContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Hora" type="Label" parent="Panel"]
+[node name="Hora" type="Label" parent="UI/Panel"]
 z_index = 111
 layout_mode = 0
 offset_left = 24.0
@@ -170,7 +171,7 @@ offset_bottom = 32.0
 theme_override_font_sizes/font_size = 32
 script = ExtResource("5_hw5s8")
 
-[connection signal="pressed" from="Panel/Opciones/Personajes" to="." method="_on_personajes_pressed"]
-[connection signal="pressed" from="Panel/Opciones/Objetos" to="." method="_on_objetos_pressed"]
-[connection signal="pressed" from="Panel/Opciones/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="Panel/Opciones/Guardar partida" to="." method="_on_guardar_partida_pressed"]
+[connection signal="pressed" from="UI/Panel/Opciones/Personajes" to="." method="_on_personajes_pressed"]
+[connection signal="pressed" from="UI/Panel/Opciones/Objetos" to="." method="_on_objetos_pressed"]
+[connection signal="pressed" from="UI/Panel/Opciones/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="UI/Panel/Opciones/Guardar partida" to="." method="_on_guardar_partida_pressed"]
